@@ -1,10 +1,10 @@
-h1. CKulla's Sandbox
+h1. CKulla's sand box
 
 This project is a place to store several small projects / prototypes I've been working on.
 
 h2. Error Monitor
 
-The error monitor displays the number of errors in your eclpse workspace in the eclipse icon in your task bar or dock.
+The error monitor displays the number of errors in your eclipse workspace in the eclipse icon in your task bar or dock.
 
 To install the error monitor use the following update site:
 
