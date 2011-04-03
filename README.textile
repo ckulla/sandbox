@@ -1,4 +1,4 @@
-h1. CKulla's Sanbox
+h1. CKulla's Sandbox
 
 This project is a place to store several small projects / prototypes I've been working on.
 
