@@ -1,0 +1,15 @@
+h1. CKulla's Sanbox
+
+This project is place to store several small projects / prototypes I've been working on.
+
+h2. Error Monitor
+
+The error monitor displays the number of errors in your eclpse workspace in the eclipse icon in your task bar or dock.
+
+To install the error monitor use the following update site:
+
+
+
+h2. License
+
+Copyright (C) 2010 Christoph Kulla. Distributed under the Eclipse Public License.
