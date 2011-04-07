@@ -12,8 +12,10 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.TaskBar;
 import org.eclipse.swt.widgets.TaskItem;
+import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IStartup;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
@@ -23,6 +25,8 @@ import org.eclipse.ui.views.markers.internal.ProblemMarker;
 public class ErrorMonitor implements IResourceChangeListener, IStartup {
 
 	Set<Long> markerIds = new HashSet<Long>();
+	
+	int previousNumberOfMarkers;
 	
 	static TaskItem getTaskBarItem() {
 		TaskBar bar = PlatformUI.getWorkbench().getDisplay().getSystemTaskBar();
@@ -85,10 +89,13 @@ public class ErrorMonitor implements IResourceChangeListener, IStartup {
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		workbench.getDisplay().asyncExec(new Runnable() {
 			public void run() {
-				if (markerIds!=null && markerIds.size() > 0) {
-					getTaskBarItem().setOverlayText("" + markerIds.size());
-				} else {
-					getTaskBarItem().setOverlayText("");
+				int numberOfMarkers = 0;
+				if (markerIds != null && markerIds.size() > 0) {
+					numberOfMarkers = markerIds.size();
+					if (numberOfMarkers != previousNumberOfMarkers) {
+						getTaskBarItem().setOverlayText(numberOfMarkers>0?String.valueOf(numberOfMarkers):null);
+						previousNumberOfMarkers = numberOfMarkers;
+					}
 				}
 			}
 		});
