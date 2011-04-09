@@ -90,12 +90,12 @@ public class ErrorMonitor implements IResourceChangeListener, IStartup {
 		workbench.getDisplay().asyncExec(new Runnable() {
 			public void run() {
 				int numberOfMarkers = 0;
-				if (markerIds != null && markerIds.size() > 0) {
+				if (markerIds != null) {
 					numberOfMarkers = markerIds.size();
-					if (numberOfMarkers != previousNumberOfMarkers) {
-						getTaskBarItem().setOverlayText(numberOfMarkers>0?String.valueOf(numberOfMarkers):null);
-						previousNumberOfMarkers = numberOfMarkers;
-					}
+				}
+				if (numberOfMarkers != previousNumberOfMarkers) {
+					getTaskBarItem().setOverlayText(numberOfMarkers>0?String.valueOf(numberOfMarkers):"");
+					previousNumberOfMarkers = numberOfMarkers;
 				}
 			}
 		});
